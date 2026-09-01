@@ -1,0 +1,50 @@
+{
+  "name": "kingyosukui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "巨大デジタル金魚すくい — Giant Digital Goldfish Scooping",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false server/index.ts",
+    "dev:https": "HTTPS=1 tsx watch --clear-screen=false server/index.ts",
+    "build": "next build",
+    "start": "NODE_ENV=production tsx server/index.ts",
+    "start:https": "NODE_ENV=production HTTPS=1 tsx server/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "tsx scripts/smoke.ts",
+    "tunnel": "tsx scripts/tunnel.ts"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.0.0",
+    "@react-three/fiber": "^9.0.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "next": "^15.1.0",
+    "postprocessing": "^6.36.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "selfsigned": "^2.4.1",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "three": "^0.185.0",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.185.0",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "^15.1.0",
+    "playwright": "^1.62.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

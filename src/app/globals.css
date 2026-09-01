@@ -1,0 +1,149 @@
+/* 夏祭りの夜 — warm lantern light against deep night blue. */
+
+:root {
+  --night-0: #07080f;
+  --night-1: #0d1020;
+  --night-2: #151a30;
+  --ink: #f4efe4;
+  --ink-dim: #a9a08f;
+  --lantern: #ffb64d;
+  --lantern-deep: #e2612b;
+  --crimson: #c8352a;
+  --water: #2fa2b8;
+  --water-deep: #123b52;
+  --gold: #f5c542;
+
+  --p1: #e0483a;
+  --p2: #3f7fd8;
+  --p3: #e8c33c;
+  --p4: #4bb264;
+
+  --font-jp: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'Shippori Mincho', serif;
+  --font-ui: 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+  --font-num: 'DIN Alternate', 'Helvetica Neue', 'Arial Narrow', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--night-0);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+#__next,
+main {
+  height: 100%;
+}
+
+a {
+  color: var(--lantern);
+}
+
+/* --- the phone is a controller, not a touch surface (spec §23) ----------- */
+.controller-surface {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+}
+
+/* --- the giant screen is pure canvas; UI hugs the edges (spec §99) ------- */
+.screen-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #05060c;
+  cursor: none;
+}
+
+.screen-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-num);
+}
+
+.jp-title {
+  font-family: var(--font-jp);
+  letter-spacing: 0.08em;
+}
+
+@keyframes kingyo-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes kingyo-pop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes kingyo-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes kingyo-rise {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-70px);
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: kingyo-fade-in 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .pop {
+    animation: none !important;
+  }
+}

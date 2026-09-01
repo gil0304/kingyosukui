@@ -1,0 +1,11 @@
+import { webkit } from 'playwright';
+const url = process.argv[2];
+const out = process.argv[3];
+const vp = (process.argv[4] || '1600x900').split('x').map(Number);
+const browser = await webkit.launch();
+const page = await browser.newPage({ viewport: { width: vp[0], height: vp[1] } });
+await page.goto(url, { waitUntil: 'load' });
+await page.waitForTimeout(3500);
+await page.screenshot({ path: out });
+await browser.close();
+console.log('saved', out);
